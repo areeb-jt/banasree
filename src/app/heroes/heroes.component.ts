@@ -18,13 +18,12 @@ onSelect(hero: Hero): void {
  
 }
 getHeroes(): void {
-  this.heroService.getHeroes().subscribe((data) =>{
-    this.heroes = data;
-  });
+ 
 
 }
   constructor(private heroService: HeroService) {
-      
+    this.heroService.getHeroes()
+    .subscribe((heroes) => this.heroes = heroes);
    }
 
   ngOnInit(): void {
