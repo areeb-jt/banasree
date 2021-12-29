@@ -15,6 +15,7 @@ export class HeroService {
     private messageService: MessageService,
     ) { }
     // constructor ends
+    
 
     updateHero(hero: Hero): Observable<any> {
       return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
@@ -69,10 +70,7 @@ searchHeroes(term: string): Observable<Hero[]> {
       };
       
     }   
-    //function
-    private log(message: string) {
-      this.messageService.add(`HeroService: ${message}`);
-    }
+
 
     //function
 
@@ -91,5 +89,9 @@ return this.http.get<Hero>(url).pipe(
   tap(_=>this.log(`fetched hero=${id}`)),
   catchError(this.handleError<Hero>(`getHero id = ${id}`))
 )
+  }
+  //function
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 }
